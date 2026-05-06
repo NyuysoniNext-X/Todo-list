@@ -1,0 +1,22 @@
+<div class="container">
+  <h1> My New start - Todo List</h1>
+  <div class="input-section">
+    <input [(ngModel)]="newTask" placeholder="Enter new task here..."/>
+    <button (click)="addTodo()">Add</button>
+  </div>
+
+  @if (todos.length === 0){
+    <p class="empty"> No tasks yet. Add one above!</p>
+  }
+
+  @for (todo of todos; track todo.id){
+    <div class="todo-item" [ngClass]="todo.completed ? 'done' : '' ">
+      <span (click)="toggleComplete(todo)">
+        {{ todo.completed ? '😎' : '😒'}}
+        {{ todo.task }}
+      </span>
+      <button class="delete" (click)="deleteTodo(todo.id)"> Delete!</button>
+    </div>
+  }
+</div>
+<p>todo-list works!</p>
